@@ -4,4 +4,8 @@ from pydantic import BaseModel
 class RegisterUser(BaseModel):
     fullname:str
     email:str
-    hashed_password:str
+    password:str
+
+class LoginUser(BaseModel):
+    email:str
+    password:str

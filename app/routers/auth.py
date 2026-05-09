@@ -13,7 +13,7 @@ def register_user(user:RegisterUser):
     user_id = str(uuid.uuid4())
     hashed_password = hash_password(user.password)
     role = "user"
-    date = datetime.UTCnow()
+    date = datetime.datetime.utcnow()
     insert_user(user_id,user.fullname,user.email,hashed_password,role,date,date)
 
 @router.post("/login")
@@ -25,7 +25,7 @@ def login_user(user:LoginUser):
         hashed_password = user_email[3]
         password = verify_password(user.password,hashed_password)
         if password:
-            return {"Successfully logged in!"}
+            return {"message":"Successfully logged in!"}
         else:
             raise HTTPException(status_code=401,detail="Invalid password")
         
