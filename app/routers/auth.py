@@ -25,7 +25,8 @@ def login_user(user:LoginUser):
         hashed_password = user_email[3]
         password = verify_password(user.password,hashed_password)
         if password:
-            return {"message":"Successfully logged in!"}
+            return {"message":"Successfully logged in!",
+                    }
         else:
             raise HTTPException(status_code=401,detail="Invalid password")
         
